@@ -1,6 +1,7 @@
 import check50
 import check50.c
 
+# Hashes of the jpg files with the trailing zeros
 HASHES_WITH_ZEROS = [
     "6e2e4e56677e55cda750a2c0bc1c96fb4952ee37aafcc0810d0d5a883834abee",  # 000.jpg
     "4b9e49c8b47574ecda37045f9a8411f5cdc02c767cbe0d021d158321f730c26a",  # 001.jpg
@@ -53,7 +54,7 @@ HASHES_WITH_ZEROS = [
     "bba63b6b98e0b5c6fbba24fd840a8eac0ff2b86973338e89ef699920c8835e30",  # 048.jpg
     "0ff470f2272f656483779e1901611d9c5237df521e51b5aab80760c5c95689af"   # 049.jpg
 ]
-
+# Hashes of the jpg files without the trailing zeros
 HASHES_WITHOUT_ZEROS = [
     "1dc1ccd72cbe6e012ca7f5d59f161fd8c1c5b2558a820802f1ab7dfbd2cc9ae3",  # 000.jpg
     "1519f7ebb5414c7eff12a11a4d7e6552c8221b49fe84633b80d7b99ed4ecd566",  # 001.jpg
