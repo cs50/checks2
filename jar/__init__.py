@@ -61,7 +61,7 @@ def test_student_file_passes():
 def test_number_functions():
     """test_jar.py contains at least four functions"""
     out = check50.run("pytest test_jar.py").stdout()
-    matches = re.search(r'(\d) passed', out)
+    matches = re.search(r'(\d+) passed', out)
     if not matches:
         raise check50.Failure("Could not parse output of pytest")
     try:
