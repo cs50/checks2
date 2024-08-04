@@ -60,5 +60,16 @@ def test_student_file_passes():
 
 @check50.check(test_student_file_passes)
 def test_number_functions():
-    """test_jar.py contains at least four valid functions"""
-    check50.run("pytest test_file.py -k 'test_four_functions'").exit(0)
+    """test_jar.py contains at least four functions"""
+    out = check50.run("pytest test_jar.py").stdout()
+    matches = re.search(r'(\d+) passed', out)
+    if not matches:
+        raise check50.Failure("Could not parse output of pytest")
+
+    try:
+        functions = int(matches.group(1))
+    except ValueError:
+        raise check50.Failure("Could not parse output of pytest")
+
+    if functions < 4:
+        raise check50.Failure("test_jar.py does not contain at least four functions")
