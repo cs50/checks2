@@ -50,6 +50,15 @@ def test_alphabet_text():
     check_font_rendering(font="alphabet", text="Moo")
 
 
+@check50.check(exists)
+def test_no_arguments():
+    """figlet.py exits given no command-line arguments"""
+    text = 'Random text'
+    exit = check50.run("python3 figlet.py").stdin(text, prompt=False).exit()
+    if exit != 0:
+        raise check50.Failure(f"Expected non-zero exit code.")
+
+
 def regex(text):
     """match case-sensitively with any characters preceding and only whitespace after"""
     return fr'^.*{escape(text)}\s*$'
