@@ -9,6 +9,15 @@ def exists():
 
 
 @check50.check(exists)
+def test_no_arguments():
+    """figlet.py exits given no command-line arguments"""
+    text = 'Random text'
+    exit = check50.run("python3 figlet.py").stdin(text, prompt=False).exit()
+    if exit != 0:
+        raise check50.Failure(f"Expected non-zero exit code.")
+
+
+@check50.check(exists)
 def test_one_argument():
     """figlet.py exits given one command-line argument"""
     exit = check50.run("python3 figlet.py test").exit()
@@ -76,4 +85,3 @@ def check_imports_random(exists):
             if (match := import_regex.search(line)) or (match := from_regex.search(line)):
                 return
     raise check50.Failure("Random library was not used")
-           
