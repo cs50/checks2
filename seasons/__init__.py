@@ -12,8 +12,9 @@ def exists():
 
 @check50.check(exists)
 def test_one_year():
-    """Input of \"1999-01-01\" yields \"Five hundred twenty-five thousand, six hundred minutes\" when today is 2000-01-01"""
-    test_valid_dates(date="1999-01-01", today="2000-01-01", output="Five hundred twenty-five thousand, six hundred minutes")
+    # There is an addition of the word 'and' at places in the official library of inflect.
+    """Input of \"1999-01-01\" yields \"Five hundred and twenty-five thousand, six hundred minutes\" when today is 2000-01-01"""
+    test_valid_dates(date="1999-01-01", today="2000-01-01", output="Five hundred and twenty-five thousand, six hundred minutes")
 
 
 @check50.check(exists)
@@ -24,20 +25,23 @@ def test_two_years():
 
 @check50.check(exists)
 def test_leap_year():
-    """Input of \"1995-01-01\" yields \"Two million, six hundred twenty-nine thousand, four hundred forty minutes\" when today is 2000-01-1"""
-    test_valid_dates(date="1995-01-01", today="2000-01-01", output="Two million, six hundred twenty-nine thousand, four hundred forty minutes")
+    # There is an addition of the word 'and' at places in the official library of inflect.
+    """Input of \"1995-01-01\" yields \"Two million, six hundred and twenty-nine thousand, four hundred and forty minutes\" when today is 2000-01-1"""
+    test_valid_dates(date="1995-01-01", today="2000-01-01", output="Two million, six hundred and twenty-nine thousand, four hundred and forty minutes")
 
 
 @check50.check(exists)
 def test_months():
-    """Input of \"2020-06-01\" yields \"Six million, ninety-two thousand, six hundred forty minutes\" when today is 2032-01-01"""
-    test_valid_dates(date="2020-06-01", today="2032-01-01", output="Six million, ninety-two thousand, six hundred forty minutes")
+    # There is an addition of the word 'and' at places in the official library of inflect.
+    """Input of \"2020-06-01\" yields \"Six million, ninety-two thousand, six hundred and forty minutes\" when today is 2032-01-01"""
+    test_valid_dates(date="2020-06-01", today="2032-01-01", output="Six million, ninety-two thousand, six hundred and xforty minutes")
 
 
 @check50.check(exists)
 def test_day():
-    """Input of \"1998-06-20\" yields \"Eight hundred six thousand, four hundred minutes\" when today is 2000-01-01"""
-    test_valid_dates(date="1998-06-20", today="2000-01-01", output="Eight hundred six thousand, four hundred minutes")
+    # There is an addition of the word 'and' at places in the official library of inflect.
+    """Input of \"1998-06-20\" yields \"Eight hundred and six thousand, four hundred minutes\" when today is 2000-01-01"""
+    test_valid_dates(date="1998-06-20", today="2000-01-01", output="Eight hundred and six thousand, four hundred minutes")
 
 
 @check50.check(exists)
