@@ -125,7 +125,6 @@ def test9():
             "Rupert Grint",
             "Daniel Radcliffe",
             "Emma Watson",
-            "Emma Watson",
         ],
         ordered=True,
     )
