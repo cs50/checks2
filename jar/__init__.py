@@ -1,6 +1,7 @@
 import check50
 import re
 
+
 @check50.check()
 def exists():
     """jar.py exists"""
@@ -59,11 +60,11 @@ def test_student_file_passes():
 
 @check50.check(test_student_file_passes)
 def test_number_functions():
-    """test_jar.py contains at least four functions"""
+    """test_jar.py contains at least four valid functions"""
     valid_test_out = check50.run("pytest test_file.py -k 'test_testfile'").stdout()
-    valid_matches = re.search(r'(\d+) passed', valid_test_out)
+    valid_matches = re.search(r"(\d+) passed", valid_test_out)
     out = check50.run("pytest test_jar.py").stdout()
-    matches = re.search(r'(\d+) passed', out)
+    matches = re.search(r"(\d+) passed", out)
     if not matches:
         raise check50.Failure("Could not parse output of pytest")
 
@@ -73,4 +74,6 @@ def test_number_functions():
         raise check50.Failure("Could not parse output of pytest")
 
     if functions < 4 or not valid_matches:
-        raise check50.Failure("test_jar.py does not contain at least four valid functions")
+        raise check50.Failure(
+            "test_jar.py does not contain at least four valid functions"
+        )
