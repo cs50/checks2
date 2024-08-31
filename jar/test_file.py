@@ -60,7 +60,7 @@ def test_testfile():
             source = inspect.getsource(member[1]).split("\n")[1:]
             for line in source:
                 line = line.strip().replace("...", "").replace("pass", "")
-                if not line.startswith("#") and line:
+                if line and not line.startswith("#"):
                     num_tests += 1
                     break
 
