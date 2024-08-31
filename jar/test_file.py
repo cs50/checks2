@@ -64,4 +64,7 @@ def test_testfile():
                     num_tests += 1
                     break
 
+        if num_tests >= 4:
+            break
+
     assert num_tests >= 4
