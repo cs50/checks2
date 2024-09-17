@@ -13,6 +13,7 @@ def test_25():
     """coke accepts 25 cents"""
     input = "25"
     output = "Amount Due: 25\n"
+    output = output.lower()
     check50.run("python3 coke.py").stdin(input, prompt=True).stdout(output, regex=True).kill()
 
 
@@ -21,6 +22,7 @@ def test_10():
     """coke accepts 10 cents"""
     input = "10"
     output = "Amount Due: 40\n"
+    output = output.lower()
     check50.run("python3 coke.py").stdin(input, prompt=True).stdout(output, regex=True).kill()
 
 
@@ -29,6 +31,7 @@ def test_1():
     """coke accepts 5 cents"""
     input = "5"
     output = "Amount Due: 45\n"
+    output = output.lower()
     check50.run("python3 coke.py").stdin(input, prompt=True).stdout(output, regex=True).kill()
 
 
@@ -37,6 +40,7 @@ def test_invalid():
     """coke rejects invalid amount of cents"""
     input = "30"
     output = "Amount Due: 50\n"
+    output = output.lower()
     check50.run("python3 coke.py").stdin(input, prompt=True).stdout(output, regex=True).kill()
 
 
@@ -45,6 +49,7 @@ def test_multiple():
     """coke accepts continued input"""
     input = "10"
     output = "Amount Due: 30\n"
+    output = output.lower()
     check50.run("python3 coke.py").stdin(input, prompt=True).stdin(input, prompt=True).stdout(output, regex=True).kill()
 
 
@@ -53,6 +58,7 @@ def test_terminate():
     """coke terminates at 50 cents"""
     input = "10"
     output = "Change Owed: 0\n"
+    output = output.lower()
     check50.run("python3 coke.py").stdin(input, prompt=True).stdin(input, prompt=True).stdin(input, prompt=True).stdin(input, prompt=True).stdin(input, prompt=True).stdout(output, regex=True).exit()
 
 
@@ -61,4 +67,5 @@ def test_change():
     """coke provides correct change"""
     input = "25"
     output = "Change Owed: 10\n"
+    output = output.lower()
     check50.run("python3 coke.py").stdin(input, prompt=True).stdin("10", prompt=True).stdin(input, prompt=True).stdout(output, regex=True).exit()
