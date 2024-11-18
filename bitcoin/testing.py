@@ -1,28 +1,29 @@
-class FakeResponse():
-
+class FakeResponse:
     def __init__(self):
         self.status_code = 200
         self.text = '{"bpi":{"USD":{"code":"USD","symbol": "&#36;","rate":"37,817.3283","description":"United States Dollar","rate_float": 37817.3283}}}'
 
     def json(*args):
         return {
-                "bpi": {
-                    "USD": {
-                        "code": "USD",
-                        "symbol": "&#36;",
-                        "rate": "37,817.3283",
-                        "description": "United States Dollar",
-                        "rate_float": 37817.3283
-                    }
+            "bpi": {
+                "USD": {
+                    "code": "USD",
+                    "symbol": "&#36;",
+                    "rate": "37,817.3283",
+                    "description": "United States Dollar",
+                    "rate_float": 37817.3283,
                 }
             }
-    
+        }
+
     # Mock raise_for_status
     def raise_for_status(self):
         pass
 
+
 import requests
-requests.get = lambda x, *args, **kwargs: FakeResponse()
+
+requests.get = lambda *args, **kwargs: FakeResponse()
 
 # Run bitcoin via import
 import bitcoin
