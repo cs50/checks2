@@ -6,6 +6,9 @@ from re import escape
 def exists():
     """game.py exists"""
     check50.exists("game.py")
+
+    # The hard-coded number 4 is the answer to the game (specified in test.py).
+    # This is the number that the user is trying to guess.
     check50.include("testing.py")
 
 
