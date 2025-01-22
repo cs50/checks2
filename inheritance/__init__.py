@@ -17,7 +17,7 @@ def compiles():
 def compiles():
     """inheritance compiles"""
     check50.c.compile("inheritance.c", lcs50=True)
-    inheritance = re.sub("int\s+main", "int distro_main", open("inheritance.c").read())
+    inheritance = re.sub("int\s+main\(", "int distro_main(", open("inheritance.c").read())
     testing = open("testing.c").read()
     with open("inheritance_test.c", "w") as f:
         f.write(inheritance)
