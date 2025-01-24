@@ -1,5 +1,3 @@
-#include <stdlib.h>
-
 int main(int argc, string argv[])
 {
     if (argc != 3)
@@ -79,31 +77,63 @@ int main(int argc, string argv[])
             break;
     }
 
+    // Allocate strings; used to prevent string literals from being
+    // shared across the program, which would make it possible to use
+    // == in place of strcmp and believe yourself correct
+    char *alice = malloc(strlen("Alice") + 1);
+    if (alice == NULL) {
+        perror("Failed to allocate memory");
+        return 1;
+    }
+    strcpy(alice, "Alice");
+
+    char *bob = malloc(strlen("Bob") + 1);
+    if (bob == NULL) {
+        perror("Failed to allocate memory");
+        return 1;
+    }
+    strcpy(bob, "Bob");
+
+    char *charlie = malloc(strlen("Charlie") + 1);
+    if (charlie == NULL) {
+        perror("Failed to allocate memory");
+        return 1;
+    }
+    strcpy(charlie, "Charlie");
+
+    char *david = malloc(strlen("David") + 1);
+    if (david == NULL) {
+        perror("Failed to allocate memory");
+        return 1;
+    }
+    strcpy(david, "David");
+
     // Test
     switch(test)
     {
-        case 0:
-            printf("%s", vote(0, 0, "Bob") ? "true" : "false");
+        case 0: {
+            printf("%s", vote(0, 0, bob) ? "true" : "false");
             break;
+        }
 
         case 1:
-            printf("%s", vote(1, 2, "David") ? "true" : "false");
+            printf("%s", vote(1, 2, david) ? "true" : "false");
             break;
 
         case 2:
-            vote(0, 0, "Charlie");
+            vote(0, 0, charlie);
             printf("%i", preferences[0][0]);
             break;
 
         case 3:
-            vote(1, 2, "Alice");
+            vote(1, 2, alice);
             printf("%i", preferences[1][2]);
             break;
 
         case 4:
-            vote(1, 0, "Bob");
-            vote(1, 1, "Alice");
-            vote(1, 2, "Charlie");
+            vote(1, 0, bob);
+            vote(1, 1, alice);
+            vote(1, 2, charlie);
             printf("%i %i %i", preferences[1][0], preferences[1][1], preferences[1][2]);
             break;
 
@@ -238,4 +268,9 @@ int main(int argc, string argv[])
             break;
 
     }
+
+    free(alice);
+    free(bob);
+    free(charlie);
+    free(david);
 }
