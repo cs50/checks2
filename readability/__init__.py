@@ -42,12 +42,12 @@ def longer_passages():
     check50.run("./readability").stdin("When he was nearly thirteen, my brother Jem got his arm badly broken at the elbow. When it healed, and Jem's fears of never being able to play football were assuaged, he was seldom self-conscious about his injury. His left arm was somewhat shorter than his right; when he stood or walked, the back of his hand was at right angles to his body, his thumb parallel to his thigh.").stdout("Grade 8\n").stdout(check50.EOF).exit(0)
 
 @check50.check(compiles)
-def sentence_punctuation():
+def exclamation_marks():
     """handles multiple sentences with different punctuation"""
     check50.run("./readability").stdin("Congratulations! Today is your day. You're off to Great Places! You're off and away!").stdout("Grade 3\n").stdout(check50.EOF).exit(0)
 
 @check50.check(compiles)
-def sentence_punctuation():
+def question_marks():
     """handles questions in passage"""
     check50.run("./readability").stdin("Would you like them here or there? I would not like them here or there. I would not like them anywhere.").stdout("Grade 2\n").stdout(check50.EOF).exit(0)
 
@@ -59,4 +59,4 @@ def before1():
 @check50.check(compiles)
 def grade16plus():
     """handles reading level at Grade 16+"""
-    check50.run("./readability").stdin("A large class of computational problems involve the determination of properties of graphs, digraphs, integers, arrays of integers, finite families of finite sets, boolean formulas and elements of other countable domains.").stdout("Grade 16\+\n", "Grade 16+\n").stdout(check50.EOF).exit(0)
+    check50.run("./readability").stdin("A large class of computational problems involve the determination of properties of graphs, digraphs, integers, arrays of integers, finite families of finite sets, boolean formulas and elements of other countable domains.").stdout("Grade 16+\n", regex=False).stdout(check50.EOF).exit(0)
