@@ -109,6 +109,17 @@ def test_score():
 
 
 @check50.check(test_generate_problems)
+def test_score_complicated():
+    """Little Professor displays number of problems correct in more complicated case"""
+    solutions = [12, 4, 15, 8, 8, 8, 12, 13, 12, 10, 6, 10, 3, 2, 1]
+    program = check50.run("python3 testing.py main").stdin("1", prompt=False)
+    for solution in solutions:
+        program.stdin(str(solution), prompt=False)
+    program.stdout(score_regex("8"), "8", regex=True)
+    program.exit(0)
+
+
+@check50.check(test_generate_problems)
 def test_EEE():
     """Little Professor displays EEE when answer is incorrect"""
     check50.run("python3 testing.py main").stdin("1", prompt=False).stdin(
