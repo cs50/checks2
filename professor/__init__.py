@@ -39,6 +39,19 @@ def test_valid_level():
 
 
 @check50.check(test_valid_level)
+def test_random():
+    """Little Professor generates random numbers correctly"""
+    level = "1"
+
+    # With random.seed(500) in testing.py, we expect these numbers from .randint(0, 9);
+    # this should catch students if they're using .randrange(0, 9) by accident
+    output = "[7, 8, 9, 7, 4, 6, 3, 1, 5, 9, 1, 0, 3, 5, 3, 6, 4, 0, 1, 5]"
+    check50.run("python3 testing.py rand_test").stdin(level, prompt=False).stdout(
+        regex(output), output, regex=True
+    )
+
+
+@check50.check(test_valid_level)
 def test_range_level_1():
     """At Level 1, Little Professor generates addition problems using 0–9"""
     level = "1"
