@@ -30,7 +30,7 @@ def register_page():
 
 @check50.check(register_page)
 def simple_register():
-    """registering user succeeds and portfolio page is displayed"""
+    """registering user succeeds (and login or portfolio page is displayed)"""
     Finance().register("_cs50", "ohHai28!", "ohHai28!").status(200)
 
 
@@ -61,9 +61,6 @@ def register_reject_duplicate_username():
 @check50.check(startup)
 def login_page():
     """login page has all required elements"""
-    if Finance().page_exists("/signin"):
-        Finance().validate_form("/signin", ["username", "password"])
-        return
     Finance().validate_form("/login", ["username", "password"])
 
 
@@ -207,8 +204,6 @@ class Finance(check50.flask.app):
     def login(self, username, password):
         """Helper function for logging in"""
         route = "/login"
-        if self.page_exists("/signin"):
-            route = "/signin"
         return self.post(route, data={"username": username, "password": password})
 
     def quote(self, ticker):
@@ -230,7 +225,7 @@ class Finance(check50.flask.app):
             try:
                 name = tag.attrs["name"]
                 if required[name]:
-                    raise Error('found more than one field called "{}"'.format(name))
+                    raise check50.Failure('found more than one field called "{}"'.format(name))
             except KeyError:
                 pass
             else:

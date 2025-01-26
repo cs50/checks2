@@ -227,8 +227,11 @@ def check_single_col(actual, expected, ordered=False):
 
     # Check column data against expected values
     expected = [str(value) for value in expected]
+
+    # If unordered, sort both before checking
     if not ordered:
         expected = set(expected)
+
     if result != expected:
         raise check50.Mismatch("\n".join(expected), "\n".join(list(result)))
 

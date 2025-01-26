@@ -19,7 +19,7 @@ def compiles():
     check50.c.compile("wordle.c", lcs50=True)
 
     # Rename main function to "distro_main"
-    wordle = re.sub("int\s+main", "int distro_main", open("wordle.c").read())
+    wordle = re.sub(r"int\s+main\(", "int distro_main(", open("wordle.c").read())
 
     # Read testing file
     testing = open("testing.c").read()
@@ -99,7 +99,7 @@ def partial_match_repeat_letter():
     """wordle recognizes guess with a repeat letter"""
     for word in ["joust", "pines", "links"]:
         check50.c.run(f"./wordle_test check_word grass {word}").stdout(3)
-        
+
 @check50.check(compiles)
 def partial_multiple_matches():
     """wordle recognizes guess with multiple matches"""
@@ -110,5 +110,5 @@ def partial_multiple_matches():
 @check50.check(compiles)
 def exact_match():
     """wordle recognizes correct guess"""
-    for word in ["grill", "sized", "world"]:
+    for word in ["gnome", "sized", "world", "grill"]:
         check50.c.run(f"./wordle_test check_word {word} {word}").stdout(10)
