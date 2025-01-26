@@ -29,23 +29,33 @@ def basic():
 def min_length():
     """handles min length (1-char) words"""
     check50.include("min_length")
-    check50.run("./speller min_length/dict min_length/text").stdout(open("min_length/out")).exit(0)
+    check50.run("./speller min_length/dict min_length/text").stdout(
+        open("min_length/out")
+    ).exit(0)
 
 
 @check50.check(compiles)
 def max_length():
     """handles max length (45-char) words"""
     check50.include("max_length")
-    check50.run("./speller max_length/dict max_length/text").stdout(open("max_length/out")).exit(0)
+    check50.run("./speller max_length/dict max_length/text").stdout(
+        open("max_length/out")
+    ).exit(0)
 
 
 @check50.check(compiles)
 def apostrophe():
     """handles words with apostrophes properly"""
     check50.include("apostrophe")
-    check50.run("./speller apostrophe/without/dict apostrophe/with/text").stdout(open("apostrophe/outs/without-with")).exit(0)
-    check50.run("./speller apostrophe/with/dict apostrophe/without/text").stdout(open("apostrophe/outs/with-without")).exit(0)
-    check50.run("./speller apostrophe/with/dict apostrophe/with/text").stdout(open("apostrophe/outs/with-with")).exit(0)
+    check50.run("./speller apostrophe/without/dict apostrophe/with/text").stdout(
+        open("apostrophe/outs/without-with")
+    ).exit(0)
+    check50.run("./speller apostrophe/with/dict apostrophe/without/text").stdout(
+        open("apostrophe/outs/with-without")
+    ).exit(0)
+    check50.run("./speller apostrophe/with/dict apostrophe/with/text").stdout(
+        open("apostrophe/outs/with-with")
+    ).exit(0)
 
 
 @check50.check(compiles)
@@ -59,10 +69,21 @@ def case():
 def substring():
     """handles substrings properly"""
     check50.include("substring")
-    check50.run("./speller substring/dict substring/text").stdout(open("substring/out")).exit(0)
+    check50.run("./speller substring/dict substring/text").stdout(
+        open("substring/out")
+    ).exit(0)
+
+
+@check50.check(compiles)
+def large_dict():
+    """handles large dictionary (hash collisions) properly"""
+    check50.include("large")
+    check50.run("./speller large/dict large/text").stdout(open("large/out")).exit(0)
 
 
 @check50.check(substring)
 def memory():
     """program is free of memory errors"""
-    check50.c.valgrind("./speller substring/dict substring/text").stdout(open("substring/out"), timeout=10).exit(0)
+    check50.c.valgrind("./speller substring/dict substring/text").stdout(
+        open("substring/out"), timeout=10
+    ).exit(0)
