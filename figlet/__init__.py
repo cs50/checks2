@@ -63,3 +63,17 @@ def check_font_rendering(font, text):
         for line in lines:
             output += line
         check50.run(f"python3 figlet.py -f {font}").stdin(text, prompt=False).stdout(regex(output), output, regex=True).exit(0)
+
+
+@check50.check(exists)
+def check_imports_random(exists):
+    """figlet.py imports random"""
+    import re
+    import_regex = re.compile(r'^import random$')
+    from_regex = re.compile(r'^from random import')
+    with open('figlet.py') as file:
+        for line in file.readlines():
+            if (match := import_regex.search(line)) or (match := from_regex.search(line)):
+                return
+    raise check50.Failure("Random library was not used")
+           
