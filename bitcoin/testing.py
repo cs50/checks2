@@ -18,7 +18,7 @@ class FakeResponse:
                 "maxSupply": "21000000.0000000000000000",
                 "marketCapUsd": "1939613325892.4607145113457500",
                 "volumeUsd24Hr": "12341417371.3505338276601668",
-                "priceUsd": "97845.02",
+                "priceUsd": "97845.0243",
                 "changePercent24Hr": "1.4324165997531723",
                 "vwap24Hr": "96203.8859537212418977",
                 "explorer": "https://blockchain.info/"

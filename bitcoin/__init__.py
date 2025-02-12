@@ -1,7 +1,7 @@
 import check50
 from re import escape
 
-price = 97845.02
+price = 97845.0243
 
 
 @check50.check()
